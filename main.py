@@ -177,25 +177,45 @@ def user_loader(user_id):
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = Register()
-    if form.validate_on_submit() and request.method == 'POST':
-        username = request.form['username']
-        email = request.form['email']
-        password = request.form['password']
-        if not User.query.filter_by(email=email).first():
-            new_user = User(username=username, email=email,
-                            password=generate_password_hash(password, method='pbkdf2:sha256', salt_length=8))
+    
+    my_form = RegisterForm()
+    if my_form.validate_on_submit():
+        if User.query.filter_by(email=my_form.email.data).first():
+            flash("You've signed up with that email already, try logging in instead.")
+            return redirect(url_for('login'))
+        else:
+            new_user = User(
+                name=my_form.name.data,
+                email=my_form.email.data,
+                password=generate_password_hash(method="pbkdf2:sha256", password=my_form.password.data, salt_length=8)
+            )
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user)
-            user_id = new_user.id
-            session['user_id'] = user_id
-            flash("You've created your account. Log in!")
-            return redirect(url_for('login'))
-        else:
-            flash("You've already signed up with that email, log in instead!")
-            return redirect(url_for('login'))
+            return redirect(url_for('login', current_user=current_user))
+    return render_template("register.html", form=my_form)
+    
+    
+    
+#     if form.validate_on_submit() and request.method == 'POST':
+#         username = request.form['username']
+#         email = request.form['email']
+#         password = request.form['password']
+#         if not User.query.filter_by(email=email).first():
+#             new_user = User(username=username, email=email,
+#                             password=generate_password_hash(password, method='pbkdf2:sha256', salt_length=8))
+#             db.session.add(new_user)
+#             db.session.commit()
+#             login_user(new_user)
+#             user_id = new_user.id
+#             session['user_id'] = user_id
+#             flash("You've created your account. Log in!")
+#             return redirect(url_for('login'))
+#         else:
+#             flash("You've already signed up with that email, log in instead!")
+#             return redirect(url_for('login'))
 
-    return render_template("register.html", form=form)
+#     return render_template("register.html", form=form)
 
 
 @app.route('/login', methods=['GET', 'POST'])
