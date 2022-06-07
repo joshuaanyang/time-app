@@ -15,7 +15,6 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 from flask_gravatar import Gravatar
 from typing import Callable
-from discord_oauth2 import DiscordAuth
 from zenora import APIClient
 
 todays_date = date.today()
@@ -44,7 +43,7 @@ REDIRECT_URI = 'http://127.0.0.1:5000/auth/callback'
 TOKEN = os.environ.get("TOKEN")
 client = APIClient(TOKEN, client_secret=CLIENT_SECRET)
 new_url = f"https://discord.com/api/oauth2/authorize?client_id={CLIENT_SECRET}&redirect_uri=http%3A%2F%2F127.0.0.1%3A5000%2Fauth%2Fcallback&response_type=code&scope=guilds"
-discord_auth = DiscordAuth(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI)
+
 
 
 class MySQLAlchemy(SQLAlchemy):
