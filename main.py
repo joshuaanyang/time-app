@@ -176,9 +176,9 @@ def user_loader(user_id):
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    form = Register()
+#     form = Register()
     
-    my_form = RegisterForm()
+    my_form = Register()
     if my_form.validate_on_submit():
         if User.query.filter_by(email=my_form.email.data).first():
             flash("You've signed up with that email already, try logging in instead.")
