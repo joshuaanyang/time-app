@@ -38,12 +38,11 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 API_ENDPOINT = "https:///discord.com/api/v10"
 CLIENT_ID = os.environ.get("CLIENT_ID")
 CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
-REDIRECT_URI = 'http://127.0.0.1:5000/auth/callback'
+REDIRECT_URI = 'https://joshpy-uroupa-time-app.herokuapp.com/auth/callback'
 
 TOKEN = os.environ.get("TOKEN")
 client = APIClient(TOKEN, client_secret=CLIENT_SECRET)
-new_url = f"https://discord.com/api/oauth2/authorize?client_id={CLIENT_SECRET}&redirect_uri=http%3A%2F%2F127.0.0.1%3A5000%2Fauth%2Fcallback&response_type=code&scope=guilds"
-
+new_url = f"https://discord.com/api/oauth2/authorize?client_id={CLIENT_ID}&redirect_uri=https%3A%2F%2Fjoshpy-uroupa-time-app.herokuapp.com%2Fauth%2Fcallback&response_type=code&scope=guilds"
 
 
 class MySQLAlchemy(SQLAlchemy):
