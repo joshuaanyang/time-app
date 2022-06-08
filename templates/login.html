@@ -11,7 +11,7 @@
 
     <div class="page-heading">
       <h1>Log In</h1>
-      <span class="subheading">Welcome Back!</span>
+      <span class="subheading"><h6><em><strong>Welcome Back!</strong></em></h6></span>
     </div>
 
 
@@ -28,7 +28,7 @@
           {% endif %}
           {% endwith %}
 
-          {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+          {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "dark"}) }}
         </div>
       </div>
     </div>
