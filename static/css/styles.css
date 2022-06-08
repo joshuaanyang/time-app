@@ -113,7 +113,9 @@ input[type="submit" i] {
     clear: left;
     width: 50px;
     padding-right: 10px;
-    text-align: right;
+  text-align: left;
+margin-right: 10px;
+margin-top: 10px;
 }
 
 .login-container form .form-control {
