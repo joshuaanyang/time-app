@@ -162,7 +162,7 @@ def user_only(f):
     @wraps(f)
     def wrapper(*args, **kwargs):
         if not current_user.is_authenticated:
-            flash('Sorry. Please login or Sign up first.')
+#             flash('Sorry. Please login or Sign up first.')
             return redirect(url_for('register'))
         return f(*args, **kwargs)
 
