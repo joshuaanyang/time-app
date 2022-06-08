@@ -125,7 +125,9 @@ margin-top: 10px;
 }
 
 .page-heading {
-  align-items: center;}
+  align-items: center;
+text-align: center;
+}
 
 .scheduler-section {
   padding: 20px;
