@@ -11,6 +11,11 @@
   font-size: small;
 }
 
+.my-message{
+padding-top: 10px;
+  align-items: center;
+  text-align: center;
+}
 /* end */
 
 
