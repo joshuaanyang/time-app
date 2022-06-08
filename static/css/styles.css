@@ -55,7 +55,7 @@ h1 {
 
 input[type="submit" i] {
   margin-top: 20px;
-  margin-left: 35%;
+  margin-left: 25%;
   -webkit-border-radius: 7;
   -moz-border-radius: 7;
   border-radius: 7px;
@@ -67,6 +67,7 @@ input[type="submit" i] {
   text-decoration: none;
         flex: 0 0 auto;
         margin-right: auto!important;
+  background-color: #000000;
 }
 
 .list-group-item {
