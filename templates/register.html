@@ -24,7 +24,7 @@
           {% endif %}
           {% endwith %}
 
-          {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+          {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "dark"}) }}
           <p class="get-bigger">Already have an account? <a href="{{ url_for('login') }}">Sign In.</a></p>
         </div>
       </div>
