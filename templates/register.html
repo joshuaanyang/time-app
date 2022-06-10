@@ -29,18 +29,18 @@
 <!--   new form         -->
           <form action="{{ url_for('register') }}" method="POST" novalidate >
 				{{form.csrf_token}}
-            <p>{{ form.email.label}} <br>{{form.email(size=52)}}
+            <p>{{ form.email.label}} {{form.email(size=52)}}
 				{% for err in form.email.errors %}
 					<span style="color:red"> {{err}}</span>
 					{% endfor %}
 				</p>
-				<p>{{ form.username.label}} <br>{{form.username(size=52)}}
+				<p>{{ form.username.label}} {{form.username(size=52)}}
 				{% for err in form.username.errors %}
 					<span style="color:red"> {{err}}</span>
 					{% endfor %}
 				</p>
 				
-                <p>{{ form.password.label}} <br>{{form.password(size=52)}}
+                <p>{{ form.password.label}} {{form.password(size=52)}}
 				{% for err in form.password.errors %}
 					<span style="color:red"> {{err}}</span>
 					{% endfor %}
