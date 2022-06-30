@@ -31,7 +31,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 ##CONNECT TO DB and create the file
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL1", "sqlite:///blog.db")
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///blog.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Keys for Discord Api - I will refresh the tokens and the secret keys
@@ -162,7 +162,8 @@ def user_only(f):
     @wraps(f)
     def wrapper(*args, **kwargs):
         if not current_user.is_authenticated:
-#             flash('Sorry. Please login or Sign up first.')
+            #             flash('Sorry. Please login or Sign up first.')
+            print("did this ")
             return redirect(url_for('register'))
         return f(*args, **kwargs)
 
@@ -176,8 +177,8 @@ def user_loader(user_id):
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-#     form = Register()
-    
+    #     form = Register()
+
     my_form = Register()
     if my_form.validate_on_submit():
         if User.query.filter_by(email=my_form.email.data).first():
@@ -194,9 +195,8 @@ def register():
             login_user(new_user)
             return redirect(url_for('login', current_user=current_user))
     return render_template("register.html", form=my_form)
-    
-    
-    
+
+
 #     if form.validate_on_submit() and request.method == 'POST':
 #         username = request.form['username']
 #         email = request.form['email']
@@ -342,6 +342,7 @@ def set_task():
         return redirect(url_for("get_user_info"))
     return render_template("create_task.html", form=form)
 
+
 # Discord
 @app.route("/auth/callback", methods=["GET", "POST"])
 def callback():
@@ -357,5 +358,6 @@ def callback():
 
     return str(guild_names)
 
+
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    app.run(debug=True)
