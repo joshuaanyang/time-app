@@ -163,7 +163,7 @@ def user_only(f):
     def wrapper(*args, **kwargs):
         if not current_user.is_authenticated:
             #             flash('Sorry. Please login or Sign up first.')
-            print("did this ")
+
             return redirect(url_for('register'))
         return f(*args, **kwargs)
 
@@ -360,4 +360,4 @@ def callback():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
